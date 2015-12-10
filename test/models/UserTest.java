@@ -14,8 +14,8 @@ import static models.Fixtures.users;
 
 public class UserTest {
 	
-	User homer = new User("Homer","Simpson","30","M","Technician");
-	
+	User homer = new User((long)1893,"Homer","Simpson","30","M","Technician");
+	Movie mov = new Movie((long)445,"boom room","1997","www.imdb/boomroom.com");
 	@Before
 	public void setUp() throws Exception {
 	}
@@ -30,6 +30,17 @@ public class UserTest {
     }
     assertEquals (users.length, ids.size());
   }
+	
+	@Test
+	public void testRatingAdd()
+	{
+		Rating rating = new Rating((long)1893,(long)445,5);
+		homer.addRating(rating);
+		assertEquals(homer.getRatings().size(), 1);
+		
+	}
+	
+
 	
 	@Test
 	public void testEquals()
